@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div id="main" style="height: auto;">
+	<div id="content" style="height: auto;background-color: white;">
+		<div class="box" style='height: auto'>
+			<h1 style="padding-top:33px;padding-left:339px">Select Your Seat:</h1>
+			<p style="padding-top:6px;padding-left:321px">Already allocated seats cannot be selected</p>
+			<div class="boxed" style="margin-left:700px;margin-right:45px">
+				<h1 style="padding-left: 47px;padding-top:10px;font-size: 20px;">{{weather.temp}} Degrees</h1>
+				<h1 style="padding-left: 59px;padding-top: 5px;font-size: 10px;">{{weather.main}}</h1>
+			</div>
+			<form method="POST">
+				{% for div in range(4) %}
+				<div class="seat">
+					<h2>Bay {{div + 1}}</h2>
+					{% for input in range(10) %}
+					{% if "{}{}".format(div+1, input+1) in seats_allocated %}
+					<input type="radio" value="{{div+1}}{{input+1}}" name="seat" disabled="disabled">
+					 <img src="/static/images/images.png" height="50px"></img>
+					{% else %}
+					<input type="radio" value="{{div+1}}{{input+1}}" name="seat">
+					 <img src="/static/images/images.png" height="50px"></img>
+					{% endif %}
+					{% endfor %}
+				</div>
+				{% endfor %}
+				<p style="padding-left: 367px;padding-bottom: 10px;">
+					<input type="submit" value="Submit" style="color: black;width: 100px; cursor: pointer;" />
+				</p>
+				{% if error %}
+				<p style="font-size: 16px; padding-top: 9px;color:red;padding-left: 304px;"> {{ message }} </p>
+				{% else %}
+				<p style="font-size: 16px; padding-top: 9px;color:green;padding-left: 304px;"> {{ message }} </p>
+				{% endif %}
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock %}

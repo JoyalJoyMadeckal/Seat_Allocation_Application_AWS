@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div id="main" style="height: 200px;">
+	<div id="content" style="height: 200px;">
+		<div class="box" style='height: 200px'>
+			<form class="login" action="/login" method="POST">
+				<p style="font-size: 16px; padding-bottom: 5px;">Username:</p>
+				<p><input type="text" name="username"
+						style="width:30%; height: 12%; border: 1px solid black; color: black;" /></p>
+				<p style="font-size: 16px; padding-top: 8px;">Password:</p>
+				<p><input type="password" name="password"
+						style="width:30%; height: 12%; border: 1px solid black; color: black;" /></p>
+				<p style="padding-left: 93px;"><input type="submit" value="Login"
+						style="color: black;width: 100px; cursor: pointer;" /></p>
+				<p style="font-size: 16px; padding-top: 9px;color:red"> {{ login_message }} </p>
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock %}
